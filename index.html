@@ -26,15 +26,15 @@
 			var map = L.map('map', { center: [-41.816939, 146.506410], zoom: 8});
 
 			// Add tile layer to map
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+			// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
-			// var geojson;
+			var geojson;
 
-			// geojson = L.geoJSON(pointData, {
-			// 	onEachFeature: function (feature, layer) {
-			// 		layer.bindPopup(feature.properties.name);
-			// 	}
-			// }).addTo(map);
+			geojson = L.geoJSON(pointData, {
+				onEachFeature: function (feature, layer) {
+					layer.bindPopup(feature.properties.name);
+				}
+			}).addTo(map);
 
 		</script>
 

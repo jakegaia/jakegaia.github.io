@@ -10,6 +10,10 @@
 		<link rel="stylesheet" href="leaflet/leaflet.css" />
 		<!-- <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" /> -->
 
+		<!-- Leaflet marker cluster CSS -->
+		<link rel="stylesheet" href="leaflet.markercluster/dist/MarkerCluster.css" />
+		<link rel="stylesheet" href="leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
 		<style>
 			html, body, #map {
 				width: 100%;
@@ -31,6 +35,9 @@
 		<!-- geojson data in JavaScript format -->
 		<script type="text/javascript" src="heritage-data.js"></script>
 
+		<!-- Leaflet marker cluster plugin -->
+		<script src="leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
 		<script type="text/javascript">
 			// Create variable for map, and give settings
 			var map = L.map('map', { center: [-41.816939, 146.506410], zoom: 8});
@@ -38,11 +45,21 @@
 			// Add tile layer to map
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
-			L.geoJSON(pointData, {
+			// call cluster group
+			var markers = L.markerClusterGroup();
+
+			// add heritage data
+			var geojson = L.geoJSON(pointData, {
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(feature.properties.name);
 				}
-			}).addTo(map);
+			});
+
+			// add heritage data to cluster group
+			markers.addLayer(geojson);
+
+			// add it all to the map
+			map.addLayer(markers);
 
 		</script>
 

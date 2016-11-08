@@ -24,7 +24,7 @@
 			var map = L.map('map', { center: [-41.816939, 146.506410], zoom: 8});
 
 			// Add tile layer to map
-			L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
 			L.geoJSON(pointData, {
 				style: function (feature) {

@@ -7,8 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Leaflet CSS -->
-		<!-- <link rel="stylesheet" href="leaflet/leaflet.css" /> -->
-		<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+		<link rel="stylesheet" href="leaflet/leaflet.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" /> -->
 
 		<style>
 			html, body, #map {
@@ -25,8 +25,8 @@
 		<div id="map"></div>
 
 		<!-- Leaflet JavaScript library -->
-		<!-- <script src="leaflet/leaflet.js"></script> -->
-		<script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+		<script src="leaflet/leaflet.js"></script>
+		<!-- <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script> -->
 
 		<!-- geojson data in JavaScript format -->
 		<script type="text/javascript" src="heritage-data.js"></script>
@@ -38,9 +38,7 @@
 			// Add tile layer to map
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
-			var geojson;
-
-			geojson = L.geoJSON(pointData, {
+			L.geoJSON(pointData, {
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(feature.properties.name);
 				}

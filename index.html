@@ -27,11 +27,9 @@
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
 			L.geoJSON(pointData, {
-				style: function (feature) {
-					return {color: '#20753F'};
+				onEachFeature: function (feature, layer) {
+					layer.bindPopup(feature.properties.name);
 				}
-			}).bindPopup(function (layer) {
-				return layer.feature.properties.name;
 			}).addTo(map);
 
 		</script>
